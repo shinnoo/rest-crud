@@ -7,7 +7,6 @@ window.addEventListener('load', () => {
 });
 
 createBtn.addEventListener('click', ()=> {
-
     let id = document.querySelector('#id').value;
     let name = document.querySelector('#name').value;
 
@@ -20,8 +19,7 @@ createBtn.addEventListener('click', ()=> {
             'Content-Type' : 'application/json'
         }
     });
-   
-
+    location.reload();
 });
 
 
@@ -34,7 +32,7 @@ function getUsers(){
     }).then(data => {
         console.log(data);
         data.forEach(element => {
-            html += `<li>${element.id} ${element.name} <a href="javascript:void(0)" onClick="deleteMember(${element.id})">Delete</a></li> <a href="javascript:void(0)" onClick="editMember(${element.id})">Edit</a></li>`;
+            html += `<li>${element.id} ${element.name} <a href="javascript:void(0)" onClick="deleteMember(${element.id})">Delete</a></li></li>`;
              
         });
         content.innerHTML = html;
@@ -56,18 +54,7 @@ function deleteMember(id){
      }).then(response => response.text())
      .then(response => console.log(response))
      .catch(error => console.log(error));
-}
-
-function editMember(id){
-
-    fetch(`http://localhost:8080/api/users/${id}`)
-    .then(res => res.json())
-    .then((data) => {
-
-        document.querySelector('#id').value = data[0].id;
-        document.querySelector('#name').value = data[0].name;
-    });
-  
+     location.reload();
 }
 
 update.addEventListener('click', ()=> {
@@ -84,6 +71,6 @@ update.addEventListener('click', ()=> {
             'Content-Type' : 'application/json'
         }
     });
-
+    location.reload();
 });
 
