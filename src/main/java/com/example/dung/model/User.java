@@ -1,7 +1,6 @@
 package com.example.dung.model;
 
 import lombok.Data;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 
